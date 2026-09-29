@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canciones — GRUPOP</title>
+<meta name="description" content="Las letras de los temas propios de GRUPOP: Capricho casual, Bahía oh, Tu Plan B, Una señal y más. Con audio de nuestras producciones.">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
+<meta name="theme-color" content="#0A0807">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Canciones — GRUPOP">
+<meta property="og:description" content="Las letras de los temas propios de GRUPOP. Con audio de nuestras producciones.">
+<meta property="og:image" content="https://gammaautomatizaciones-rc.github.io/grupop/assets/img/og.jpg">
+<meta property="og:url" content="https://gammaautomatizaciones-rc.github.io/grupop/canciones.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
+
+<header class="nav scrolled" id="nav">
+  <a href="index.html" class="nav__brand">
+    <img src="assets/img/logo.png" alt="GRUPOP" class="nav__logo">
+    <span>GRUPOP</span>
+  </a>
+  <nav class="nav__links" id="navLinks">
+    <a href="index.html#shows">Shows</a>
+    <a href="index.html#nosotros">Nosotros</a>
+    <a href="index.html#musica">Música</a>
+    <a href="canciones.html" style="color:var(--oro2)">Canciones</a>
+    <a href="index.html#galeria">Galería</a>
+    <a href="https://wa.me/5493855134762" target="_blank" rel="noopener" class="btn btn--wsp btn--sm">
+      <i data-lucide="message-circle"></i> WhatsApp
+    </a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Menú"><i data-lucide="menu"></i></button>
+</header>
+
+<section class="subhero">
+  <div class="subhero__glow" aria-hidden="true"></div>
+  <span class="kicker">Temas propios</span>
+  <h1>Canciones</h1>
+  <p>Las letras de lo que escribimos y producimos. Nueve historias para cantar en el próximo show.</p>
+</section>
+
+<main class="songs" id="songs"></main>
+
+<footer class="footer">
+  <img src="assets/img/logo.png" alt="GRUPOP" class="footer__logo">
+  <p class="footer__name">GRUPOP</p>
+  <p class="footer__sub">Música en vivo · Córdoba, Argentina</p>
+  <p class="footer__by"><a href="index.html">← Volver al inicio</a> · Sitio por <a href="https://wa.me/5493855134762" rel="noopener">GAMMA</a></p>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="canciones-data.js"></script>
+<script>
+(function () {
+  const cont = document.getElementById("songs");
+  const songs = window.CANCIONES || [];
+  cont.innerHTML = songs.map((s, i) => `
+    <article class="song${i === 0 ? " open" : ""}" data-song>
+      <button class="song__head" aria-expanded="${i === 0}">
+        <span class="song__num">${String(i + 1).padStart(2, "0")}</span>
+        <span class="song__title">${s.titulo}</span>
+        ${s.audio ? '<span class="song__badge"><i data-lucide="volume-2"></i> Con audio</span>' : ""}
+        <span class="song__chev"><i data-lucide="chevron-down"></i></span>
+      </button>
+      <div class="song__body">
+        <div class="song__inner">
+          ${s.audio ? `<div class="song__player"><audio controls preload="none" src="${s.audio}"></audio></div>` : ""}
+          ${s.estrofas.map((e) => `<div class="estrofa">${e.map((l) => `<p>${l}</p>`).join("")}</div>`).join("")}
+        </div>
+      </div>
+    </article>`).join("");
+
+  // acordeón
+  cont.querySelectorAll("[data-song]").forEach((song) => {
+    const head = song.querySelector(".song__head");
+    const body = song.querySelector(".song__body");
+    const setH = () => { body.style.maxHeight = song.classList.contains("open") ? body.scrollHeight + "px" : "0px"; };
+    if (song.classList.contains("open")) requestAnimationFrame(setH);
+    head.addEventListener("click", () => {
+      const open = song.classList.toggle("open");
+      head.setAttribute("aria-expanded", open);
+      setH();
+    });
+  });
+
+  // nav
+  const nav = document.getElementById("nav"), sb = document.getElementById("scrollbar");
+  addEventListener("scroll", () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    sb.style.width = (h > 0 ? (scrollY / h) * 100 : 0) + "%";
+  }, { passive: true });
+  document.getElementById("navToggle").addEventListener("click", () =>
+    document.getElementById("navLinks").classList.toggle("open"));
+
+  if (window.lucide) lucide.createIcons();
+})();
+</script>
+</body>
+</html>

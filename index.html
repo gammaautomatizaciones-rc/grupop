@@ -7,8 +7,8 @@
 <meta name="description" content="GRUPOP, banda de música en vivo de Córdoba. Clásicos que todos cantan y temas propios. Mirá los próximos shows y confirmá tu lugar.">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/favicon.png">
+<meta name="theme-color" content="#0A0807">
 
-<!-- Open Graph / redes -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="GRUPOP — Música en vivo">
 <meta property="og:description" content="Clásicos y temas propios en vivo. Próximo show: Hilos Bar, viernes 2/10, 21 hs. Confirmá tu lugar.">
@@ -22,11 +22,13 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
 
 <!-- NAV -->
 <header class="nav" id="nav">
@@ -38,6 +40,7 @@
     <a href="#shows">Shows</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#musica">Música</a>
+    <a href="canciones.html">Canciones</a>
     <a href="#galeria">Galería</a>
     <a href="#contacto">Contacto</a>
     <a href="https://wa.me/5493855134762" target="_blank" rel="noopener" class="btn btn--wsp btn--sm">
@@ -50,14 +53,31 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero__bg"></div>
+  <div class="hero__lights" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="hero__vignette" aria-hidden="true"></div>
+
   <div class="hero__inner">
-    <img src="assets/img/logo.png" alt="GRUPOP" class="hero__logo" data-aos="zoom-in">
-    <h1 class="hero__title" data-aos="fade-up">GRUPOP</h1>
-    <p class="hero__tag" data-aos="fade-up" data-aos-delay="100">Música en vivo · Córdoba</p>
-    <p class="hero__sub" data-aos="fade-up" data-aos-delay="150">Los clásicos que todos cantan y nuestros propios temas. Una fiesta de principio a fin.</p>
-    <div class="hero__cta" data-aos="fade-up" data-aos-delay="250">
-      <a href="#shows" class="btn btn--primary">Próximos shows</a>
-      <a href="#musica" class="btn btn--ghost"><i data-lucide="play"></i> Escuchar</a>
+    <span class="hero__eyebrow" data-aos="fade-down">Música en vivo · Córdoba</span>
+    <h1 class="hero__title" data-aos="zoom-in">
+      <img src="assets/img/logo.png" alt="" class="hero__logo" aria-hidden="true">
+      <span class="hero__word">GRUPOP</span>
+    </h1>
+    <p class="hero__sub" data-aos="fade-up" data-aos-delay="120">
+      Los clásicos que todos cantan y nuestros propios temas. Una <em>fiesta</em> de principio a fin.
+    </p>
+    <div class="hero__cta" data-aos="fade-up" data-aos-delay="220">
+      <button class="btn btn--primary btn--lg" data-rsvp-hero><i data-lucide="ticket"></i> Reservá tu lugar</button>
+      <a href="#musica" class="btn btn--ghost btn--lg"><i data-lucide="play"></i> Escuchar</a>
+    </div>
+
+    <div class="hero__next" data-aos="fade-up" data-aos-delay="320" id="heroNext" hidden>
+      <span class="hero__next-label">Próximo show en</span>
+      <div class="countdown" id="heroCountdown">
+        <div><b data-cd="d">00</b><span>días</span></div>
+        <div><b data-cd="h">00</b><span>hs</span></div>
+        <div><b data-cd="m">00</b><span>min</span></div>
+        <div><b data-cd="s">00</b><span>seg</span></div>
+      </div>
     </div>
   </div>
   <a href="#shows" class="hero__scroll" aria-label="Bajar"><i data-lucide="chevron-down"></i></a>
@@ -67,11 +87,11 @@
 <section class="section" id="shows">
   <div class="section__head" data-aos="fade-up">
     <span class="kicker">Agenda</span>
-    <h2>Próximos shows</h2>
+    <h2>Próximos <span class="txt-red">shows</span></h2>
     <p>Confirmá tu lugar y ayudanos a llenar la fecha. Cuantos más seamos, mejor la noche.</p>
   </div>
-  <div class="shows" id="showsList"><!-- render dinámico --></div>
-  <p class="shows__empty" id="showsEmpty" hidden>Por ahora no hay fechas cargadas. Seguinos para enterarte de la próxima. 🎸</p>
+  <div class="shows" id="showsList"></div>
+  <p class="shows__empty" id="showsEmpty" hidden>Por ahora no hay fechas cargadas. Seguinos para enterarte de la próxima.</p>
 </section>
 
 <!-- NOSOTROS -->
@@ -79,10 +99,19 @@
   <div class="nosotros">
     <div class="nosotros__text" data-aos="fade-right">
       <span class="kicker">Quiénes somos</span>
-      <h2>La banda</h2>
-      <p>GRUPOP nació en Córdoba con una idea simple: que no se pueda estar quieto. Somos una banda de música en vivo que cruza los clásicos que todos se saben con temas propios, para que cada show sea una fiesta de arriba a abajo.</p>
-      <p>Tocamos en bares, fiestas y eventos. Si buscás música en serio para tu noche, este es el lugar.</p>
-      <a href="#contacto" class="btn btn--primary">Contratanos</a>
+      <h2>La <span class="txt-gold">banda</span></h2>
+      <p>GRUPOP nació en Córdoba con una idea simple: que no se pueda estar quieto. Cruzamos los clásicos que todos se saben con temas propios, para que cada show sea una fiesta de arriba a abajo.</p>
+      <p>No somos una banda de covers más: escribimos y producimos nuestras propias canciones —de <em>Capricho casual</em> a <em>Un tren a España</em>— y las mezclamos con los hits que hacen cantar a todos.</p>
+      <p>Del ensayo al escenario, tocamos en bares, teatros, fiestas y eventos. Si buscás música en serio para tu noche, este es el lugar.</p>
+      <div class="stats">
+        <div><b>9</b><span>Temas propios</span></div>
+        <div><b>3</b><span>Grabados en estudio</span></div>
+        <div><b>100%</b><span>En vivo</span></div>
+      </div>
+      <div class="nosotros__cta">
+        <button class="btn btn--primary" data-rsvp-hero><i data-lucide="ticket"></i> Reservá para el próximo</button>
+        <a href="canciones.html" class="btn btn--ghost"><i data-lucide="mic-vocal"></i> Ver las letras</a>
+      </div>
     </div>
     <div class="nosotros__grid" data-aos="fade-left">
       <div class="member"><i data-lucide="mic-vocal"></i><span>Voz</span></div>
@@ -101,28 +130,34 @@
 <section class="section" id="musica">
   <div class="section__head" data-aos="fade-up">
     <span class="kicker">Temas propios</span>
-    <h2>Nuestra música</h2>
-    <p>Producidos por la banda. Dale play.</p>
+    <h2>Nuestra <span class="txt-red">música</span></h2>
+    <p>Tres temas grabados en estudio. Dale play — y después mirá las nueve letras.</p>
   </div>
   <div class="tracks" id="tracks">
     <article class="track" data-src="assets/audio/no-lo-considero.mp3" data-aos="fade-up">
       <button class="track__play" aria-label="Reproducir"><i data-lucide="play"></i></button>
+      <span class="track__n">01</span>
       <div class="track__info"><h3>No lo considero</h3><span>GRUPOP · tema propio</span></div>
       <div class="track__bar"><div class="track__prog"></div></div>
       <span class="track__time">0:00</span>
     </article>
     <article class="track" data-src="assets/audio/capricho-casual.mp3" data-aos="fade-up" data-aos-delay="80">
       <button class="track__play" aria-label="Reproducir"><i data-lucide="play"></i></button>
+      <span class="track__n">02</span>
       <div class="track__info"><h3>Capricho casual</h3><span>GRUPOP · tema propio</span></div>
       <div class="track__bar"><div class="track__prog"></div></div>
       <span class="track__time">0:00</span>
     </article>
     <article class="track" data-src="assets/audio/universo-nuevo.mp3" data-aos="fade-up" data-aos-delay="160">
       <button class="track__play" aria-label="Reproducir"><i data-lucide="play"></i></button>
+      <span class="track__n">03</span>
       <div class="track__info"><h3>Universo nuevo</h3><span>GRUPOP · tema propio</span></div>
       <div class="track__bar"><div class="track__prog"></div></div>
       <span class="track__time">0:00</span>
     </article>
+  </div>
+  <div class="musica__cta" data-aos="fade-up">
+    <a href="canciones.html" class="btn btn--ghost btn--lg"><i data-lucide="list-music"></i> Ver las 9 canciones y sus letras</a>
   </div>
 </section>
 
@@ -134,24 +169,25 @@
     <p>Momentos arriba del escenario.</p>
   </div>
   <div class="gallery" id="gallery">
-    <img src="assets/img/vivo-1.jpg" alt="GRUPOP en vivo" data-aos="fade-up">
-    <img src="assets/img/vivo-2.jpg" alt="GRUPOP en vivo" data-aos="fade-up" data-aos-delay="60">
-    <img src="assets/img/vivo-3.jpg" alt="GRUPOP en vivo" data-aos="fade-up" data-aos-delay="120">
-    <img src="assets/img/vivo-4.jpg" alt="GRUPOP en vivo" data-aos="fade-up">
-    <img src="assets/img/vivo-5.jpg" alt="GRUPOP en vivo" data-aos="fade-up" data-aos-delay="60">
-    <img src="assets/img/vivo-6.jpg" alt="GRUPOP en vivo" data-aos="fade-up" data-aos-delay="120">
+    <figure class="g g--tall" data-aos="fade-up"><img src="assets/img/vivo-1.jpg" alt="GRUPOP en vivo"><span class="g__zoom"><i data-lucide="expand"></i></span></figure>
+    <figure class="g" data-aos="fade-up" data-aos-delay="60"><img src="assets/img/vivo-3.jpg" alt="GRUPOP en vivo"><span class="g__zoom"><i data-lucide="expand"></i></span></figure>
+    <figure class="g" data-aos="fade-up" data-aos-delay="120"><img src="assets/img/vivo-4.jpg" alt="GRUPOP en vivo"><span class="g__zoom"><i data-lucide="expand"></i></span></figure>
+    <figure class="g" data-aos="fade-up"><img src="assets/img/vivo-2.jpg" alt="GRUPOP en vivo"><span class="g__zoom"><i data-lucide="expand"></i></span></figure>
+    <figure class="g g--wide" data-aos="fade-up" data-aos-delay="60"><img src="assets/img/vivo-5.jpg" alt="GRUPOP en vivo"><span class="g__zoom"><i data-lucide="expand"></i></span></figure>
+    <figure class="g" data-aos="fade-up" data-aos-delay="120"><img src="assets/img/vivo-6.jpg" alt="GRUPOP en vivo"><span class="g__zoom"><i data-lucide="expand"></i></span></figure>
   </div>
 </section>
 
 <!-- CONTACTO -->
 <section class="section contacto" id="contacto">
+  <div class="contacto__glow" aria-hidden="true"></div>
   <div class="section__head" data-aos="fade-up">
     <span class="kicker">Contacto</span>
-    <h2>Llevá GRUPOP a tu noche</h2>
+    <h2>Llevá <span class="txt-gold">GRUPOP</span> a tu noche</h2>
     <p>Escribinos por WhatsApp para fechas, contrataciones o lo que necesites.</p>
   </div>
   <div class="contacto__cards" data-aos="fade-up">
-    <a href="https://wa.me/5493855134762" target="_blank" rel="noopener" class="ccard">
+    <a href="https://wa.me/5493855134762" target="_blank" rel="noopener" class="ccard ccard--wsp">
       <i data-lucide="message-circle"></i>
       <h3>WhatsApp</h3><span>3855 13-4762</span>
     </a>
@@ -164,7 +200,8 @@
 
 <footer class="footer">
   <img src="assets/img/logo.png" alt="GRUPOP" class="footer__logo">
-  <p>GRUPOP · Música en vivo · Córdoba, Argentina</p>
+  <p class="footer__name">GRUPOP</p>
+  <p class="footer__sub">Música en vivo · Córdoba, Argentina</p>
   <p class="footer__by">Sitio por <a href="https://wa.me/5493855134762" rel="noopener">GAMMA</a></p>
 </footer>
 
@@ -172,17 +209,18 @@
 <div class="modal" id="modal" hidden>
   <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal__close" id="modalClose" aria-label="Cerrar"><i data-lucide="x"></i></button>
+    <span class="modal__kicker">Confirmá tu lugar</span>
     <h3 id="modalTitle">Voy a ir</h3>
     <p class="modal__show" id="modalShow"></p>
     <form id="rsvpForm" class="rsvp">
       <label>Tu nombre
-        <input type="text" name="nombre" required maxlength="80" placeholder="Nombre y apellido">
+        <input type="text" name="nombre" required maxlength="80" placeholder="Nombre y apellido" autocomplete="name">
       </label>
-      <label>¿Cuántos van? (contándote)
+      <label>¿Cuántos van? <span class="opt">(contándote)</span>
         <input type="number" name="cantidad" min="1" max="20" value="1" required>
       </label>
       <label>WhatsApp <span class="opt">(opcional, para avisarte cambios)</span>
-        <input type="tel" name="tel" maxlength="30" placeholder="351...">
+        <input type="tel" name="tel" maxlength="30" placeholder="Ej. 3855 13-4762" autocomplete="tel">
       </label>
       <button type="submit" class="btn btn--primary btn--block" id="rsvpSubmit">Confirmar mi lugar</button>
       <p class="rsvp__msg" id="rsvpMsg"></p>
