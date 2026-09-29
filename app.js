@@ -10,7 +10,7 @@ const SHOWS = [
     lugar: "Hilos Bar",
     direccion: "Juan Larrea 1518, B° General Paz",
     ciudad: "Córdoba",
-    img: "assets/img/show-hilos.png",
+    img: "assets/img/show-hilos.png?v=2",
     mapa: "https://maps.google.com/?q=Juan+Larrea+1518+Cordoba",
   },
 ];
