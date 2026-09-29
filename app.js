@@ -15,12 +15,26 @@ const SHOWS = [
   },
 ];
 
-/* ---------- init libs ---------- */
+/* reveal on scroll — IntersectionObserver propio (no depende de scroll events, va bien con Lenis) */
+function initReveal() {
+  const els = document.querySelectorAll("[data-aos]");
+  els.forEach((el) => {
+    const d = el.getAttribute("data-aos-delay");
+    if (d) el.style.transitionDelay = d + "ms";
+  });
+  if (!("IntersectionObserver" in window)) { els.forEach((el) => el.classList.add("in")); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  els.forEach((el) => io.observe(el));
+}
+
+/* ---------- init ---------- */
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.AOS) AOS.init({ once: true, duration: 700, offset: 60 });
   renderShows();
   initPlayer();
   initGallery();
+  initReveal();
   if (window.lucide) lucide.createIcons();
 });
 

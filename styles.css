@@ -33,6 +33,11 @@ section{scroll-margin-top:var(--nav-h)}
 .kicker{display:inline-block;color:var(--oro);font-weight:700;letter-spacing:4px;
   text-transform:uppercase;font-size:13px;margin-bottom:10px}
 
+/* reveal on scroll (propio, sin libs). Solo oculta si hay JS -> si el JS falla, todo se ve igual */
+.js [data-aos]{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.js [data-aos].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js [data-aos]{transition:none}}
+
 /* ===== NAV ===== */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;
   display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,54px);
