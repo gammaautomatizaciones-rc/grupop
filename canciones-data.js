@@ -29,6 +29,39 @@ window.CANCIONES = [
     ]
   },
   {
+    "slug": "universo-nuevo",
+    "titulo": "Universo nuevo",
+    "audio": "assets/audio/universo-nuevo.mp3",
+    "estrofas": [
+      [
+        "Hay un sueño en el aire que me invita a caminar y a seguir mi vida",
+        "Es como una herida suave de una aguja en un tatuaje de mi mejilla",
+        "Es una luz al final del túnel, un universo"
+      ],
+      [
+        "Hay un juego de poder que me limita a crear y a encontrar la salida",
+        "Una fiesta de placer sería lo ideal",
+        "Pero al final de todo, termina"
+      ],
+      [
+        "Es una luz al final del túnel, un universo nuevo"
+      ],
+      [
+        "Hoy sus ojos tienen calma y a pesar de los conflictos, está tranquila",
+        "Es un lienzo del amor que va quemando la razón, en estos días",
+        "Uoh oh",
+        "Es una luz al final del túnel, un universo nuevo"
+      ],
+      [
+        "Un universo nuevo",
+        "Un universo nuevo",
+        "Un universo nuevo",
+        "Un universo nuevo",
+        "Un universo nuevo"
+      ]
+    ]
+  },
+  {
     "slug": "bahia-oh",
     "titulo": "Bahía oh",
     "audio": null,
