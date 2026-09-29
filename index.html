@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRUPOP — Música en vivo | Córdoba</title>
+<meta name="description" content="GRUPOP, banda de música en vivo de Córdoba. Clásicos que todos cantan y temas propios. Mirá los próximos shows y confirmá tu lugar.">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
+
+<!-- Open Graph / redes -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="GRUPOP — Música en vivo">
+<meta property="og:description" content="Clásicos y temas propios en vivo. Próximo show: Hilos Bar, viernes 2/10, 21 hs. Confirmá tu lugar.">
+<meta property="og:image" content="https://gammaautomatizaciones-rc.github.io/grupop/assets/img/show-hilos.png">
+<meta property="og:url" content="https://gammaautomatizaciones-rc.github.io/grupop/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="#hero" class="nav__brand">
+    <img src="assets/img/logo.png" alt="GRUPOP" class="nav__logo">
+    <span>GRUPOP</span>
+  </a>
+  <nav class="nav__links" id="navLinks">
+    <a href="#shows">Shows</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#musica">Música</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://wa.me/5493518695750" target="_blank" rel="noopener" class="btn btn--wsp btn--sm">
+      <i data-lucide="message-circle"></i> WhatsApp
+    </a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Menú"><i data-lucide="menu"></i></button>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__inner">
+    <img src="assets/img/logo.png" alt="GRUPOP" class="hero__logo" data-aos="zoom-in">
+    <h1 class="hero__title" data-aos="fade-up">GRUPOP</h1>
+    <p class="hero__tag" data-aos="fade-up" data-aos-delay="100">Música en vivo · Córdoba</p>
+    <p class="hero__sub" data-aos="fade-up" data-aos-delay="150">Los clásicos que todos cantan y nuestros propios temas. Una fiesta de principio a fin.</p>
+    <div class="hero__cta" data-aos="fade-up" data-aos-delay="250">
+      <a href="#shows" class="btn btn--primary">Próximos shows</a>
+      <a href="#musica" class="btn btn--ghost"><i data-lucide="play"></i> Escuchar</a>
+    </div>
+  </div>
+  <a href="#shows" class="hero__scroll" aria-label="Bajar"><i data-lucide="chevron-down"></i></a>
+</section>
+
+<!-- SHOWS -->
+<section class="section" id="shows">
+  <div class="section__head" data-aos="fade-up">
+    <span class="kicker">Agenda</span>
+    <h2>Próximos shows</h2>
+    <p>Confirmá tu lugar y ayudanos a llenar la fecha. Cuantos más seamos, mejor la noche.</p>
+  </div>
+  <div class="shows" id="showsList"><!-- render dinámico --></div>
+  <p class="shows__empty" id="showsEmpty" hidden>Por ahora no hay fechas cargadas. Seguinos para enterarte de la próxima. 🎸</p>
+</section>
+
+<!-- NOSOTROS -->
+<section class="section section--alt" id="nosotros">
+  <div class="nosotros">
+    <div class="nosotros__text" data-aos="fade-right">
+      <span class="kicker">Quiénes somos</span>
+      <h2>La banda</h2>
+      <p>GRUPOP nació en Córdoba con una idea simple: que no se pueda estar quieto. Somos una banda de música en vivo que cruza los clásicos que todos se saben con temas propios, para que cada show sea una fiesta de arriba a abajo.</p>
+      <p>Tocamos en bares, fiestas y eventos. Si buscás música en serio para tu noche, este es el lugar.</p>
+      <a href="#contacto" class="btn btn--primary">Contratanos</a>
+    </div>
+    <div class="nosotros__grid" data-aos="fade-left">
+      <div class="member"><i data-lucide="mic-vocal"></i><span>Voz</span></div>
+      <div class="member"><i data-lucide="guitar"></i><span>Guitarra</span></div>
+      <div class="member"><i data-lucide="music-2"></i><span>Bajo</span></div>
+      <div class="member"><i data-lucide="piano"></i><span>Teclados</span></div>
+      <div class="member"><i data-lucide="drum"></i><span>Batería</span></div>
+      <div class="member"><i data-lucide="music-4"></i><span>Percusión</span></div>
+      <div class="member"><i data-lucide="mic"></i><span>Coros</span></div>
+      <div class="member member--more"><i data-lucide="sparkles"></i><span>+ energía</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MUSICA -->
+<section class="section" id="musica">
+  <div class="section__head" data-aos="fade-up">
+    <span class="kicker">Temas propios</span>
+    <h2>Nuestra música</h2>
+    <p>Producidos por la banda. Dale play.</p>
+  </div>
+  <div class="tracks" id="tracks">
+    <article class="track" data-src="assets/audio/no-lo-considero.mp3" data-aos="fade-up">
+      <button class="track__play" aria-label="Reproducir"><i data-lucide="play"></i></button>
+      <div class="track__info"><h3>No lo considero</h3><span>GRUPOP · tema propio</span></div>
+      <div class="track__bar"><div class="track__prog"></div></div>
+      <span class="track__time">0:00</span>
+    </article>
+    <article class="track" data-src="assets/audio/capricho-casual.mp3" data-aos="fade-up" data-aos-delay="80">
+      <button class="track__play" aria-label="Reproducir"><i data-lucide="play"></i></button>
+      <div class="track__info"><h3>Capricho casual</h3><span>GRUPOP · tema propio</span></div>
+      <div class="track__bar"><div class="track__prog"></div></div>
+      <span class="track__time">0:00</span>
+    </article>
+    <article class="track" data-src="assets/audio/universo-nuevo.mp3" data-aos="fade-up" data-aos-delay="160">
+      <button class="track__play" aria-label="Reproducir"><i data-lucide="play"></i></button>
+      <div class="track__info"><h3>Universo nuevo</h3><span>GRUPOP · tema propio</span></div>
+      <div class="track__bar"><div class="track__prog"></div></div>
+      <span class="track__time">0:00</span>
+    </article>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="section section--alt" id="galeria">
+  <div class="section__head" data-aos="fade-up">
+    <span class="kicker">En vivo</span>
+    <h2>Galería</h2>
+    <p>Momentos arriba del escenario.</p>
+  </div>
+  <div class="gallery" id="gallery">
+    <img src="assets/img/vivo-1.jpg" alt="GRUPOP en vivo" data-aos="fade-up">
+    <img src="assets/img/vivo-2.jpg" alt="GRUPOP en vivo" data-aos="fade-up" data-aos-delay="60">
+    <img src="assets/img/vivo-3.jpg" alt="GRUPOP en vivo" data-aos="fade-up" data-aos-delay="120">
+    <img src="assets/img/vivo-4.jpg" alt="GRUPOP en vivo" data-aos="fade-up">
+    <img src="assets/img/vivo-5.jpg" alt="GRUPOP en vivo" data-aos="fade-up" data-aos-delay="60">
+    <img src="assets/img/vivo-6.jpg" alt="GRUPOP en vivo" data-aos="fade-up" data-aos-delay="120">
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section contacto" id="contacto">
+  <div class="section__head" data-aos="fade-up">
+    <span class="kicker">Contacto</span>
+    <h2>Llevá GRUPOP a tu noche</h2>
+    <p>Escribinos por WhatsApp para fechas, contrataciones o lo que necesites.</p>
+  </div>
+  <div class="contacto__cards" data-aos="fade-up">
+    <a href="https://wa.me/5493518695750" target="_blank" rel="noopener" class="ccard">
+      <i data-lucide="message-circle"></i>
+      <h3>WhatsApp</h3><span>351 869-5750</span>
+    </a>
+    <a href="https://maps.google.com/?q=Juan+Larrea+1518+Cordoba" target="_blank" rel="noopener" class="ccard">
+      <i data-lucide="map-pin"></i>
+      <h3>Próximo show</h3><span>Hilos Bar · Córdoba</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <img src="assets/img/logo.png" alt="GRUPOP" class="footer__logo">
+  <p>GRUPOP · Música en vivo · Córdoba, Argentina</p>
+  <p class="footer__by">Sitio por <a href="https://wa.me/5493518695750" rel="noopener">GAMMA</a></p>
+</footer>
+
+<!-- MODAL RSVP -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" id="modalClose" aria-label="Cerrar"><i data-lucide="x"></i></button>
+    <h3 id="modalTitle">Voy a ir</h3>
+    <p class="modal__show" id="modalShow"></p>
+    <form id="rsvpForm" class="rsvp">
+      <label>Tu nombre
+        <input type="text" name="nombre" required maxlength="80" placeholder="Nombre y apellido">
+      </label>
+      <label>¿Cuántos van? (contándote)
+        <input type="number" name="cantidad" min="1" max="20" value="1" required>
+      </label>
+      <label>WhatsApp <span class="opt">(opcional, para avisarte cambios)</span>
+        <input type="tel" name="tel" maxlength="30" placeholder="351...">
+      </label>
+      <button type="submit" class="btn btn--primary btn--block" id="rsvpSubmit">Confirmar mi lugar</button>
+      <p class="rsvp__msg" id="rsvpMsg"></p>
+    </form>
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
